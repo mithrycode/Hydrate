@@ -7,8 +7,9 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.support.annotation.NonNull;
 
-//import java.security.KeyStore;
+import java.security.KeyStore;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         notification = new NotificationCompat.Builder(this, "45612");
+
         notification.setAutoCancel(true);
     }
 
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         notification.setContentText("You need to drink that glass of water, bro!");
 
         Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         notification.setContentIntent(pendingIntent);
 
